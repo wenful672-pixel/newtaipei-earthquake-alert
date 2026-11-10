@@ -5,8 +5,11 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'android-source.zip'
+      - 'newtaipei-earthquake-android-source.zip'
       - '.github/workflows/android.yml'
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -31,7 +34,7 @@ jobs:
 
       - name: Extract Android project
         run: |
-          unzip -q android-source.zip -d appsrc
+          unzip -q newtaipei-earthquake-android-source.zip -d appsrc
 
       - name: Build APK
         run: |
@@ -42,3 +45,4 @@ jobs:
         with:
           name: NewTaipei-Earthquake-APK
           path: appsrc/app/build/outputs/apk/debug/app-debug.apk
+
